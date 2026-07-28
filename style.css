@@ -1,1 +1,817 @@
+/* ===========================================
+   STYLE.CSS
+   Scrapbook Birthday Website
+=========================================== */
 
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+linear-gradient(rgba(248,244,236,.82),rgba(248,244,236,.82)),
+url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+background-size:cover;
+
+overflow-x:hidden;
+
+color:#3b3b3b;
+
+position:relative;
+
+min-height:100vh;
+
+}
+
+/* ========================= */
+/* FLOATING STARS */
+/* ========================= */
+
+#stars{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(white 1px, transparent 1px),
+
+radial-gradient(#f6d36f 1px, transparent 1px),
+
+radial-gradient(#dcecff 1px, transparent 1px);
+
+background-size:
+
+140px 140px,
+
+220px 220px,
+
+170px 170px;
+
+opacity:.45;
+
+animation:twinkle 14s linear infinite;
+
+z-index:0;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ========================= */
+
+.page{
+
+display:none;
+
+min-height:100vh;
+
+justify-content:center;
+
+align-items:center;
+
+padding:70px 25px;
+
+position:relative;
+
+z-index:2;
+
+animation:fade .8s ease;
+
+}
+
+.page.active{
+
+display:flex;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ========================= */
+/* WELCOME */
+/* ========================= */
+
+.welcome-card{
+
+background:rgba(255,255,255,.78);
+
+backdrop-filter:blur(12px);
+
+padding:70px;
+
+border-radius:28px;
+
+text-align:center;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.12);
+
+max-width:720px;
+
+border:1px solid rgba(255,255,255,.7);
+
+}
+
+.welcome-card h1{
+
+font-size:55px;
+
+font-family:'Playfair Display',serif;
+
+margin-bottom:20px;
+
+}
+
+.welcome-card p{
+
+font-size:22px;
+
+margin-bottom:40px;
+
+font-style:italic;
+
+color:#777;
+
+}
+
+button{
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:999px;
+
+background:#9eb7d8;
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+button:hover{
+
+transform:translateY(-5px);
+
+background:#87a8d4;
+
+}
+/* ========================= */
+/* SCRAPBOOK PAGE */
+/* ========================= */
+
+.scrapbook-page{
+
+max-width:900px;
+
+width:100%;
+
+background:#fdfaf3;
+
+padding:55px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 25px 70px rgba(0,0,0,.12);
+
+position:relative;
+
+overflow:hidden;
+
+border:2px solid rgba(255,255,255,.7);
+
+}
+
+/* subtle paper texture */
+
+.scrapbook-page::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+url("https://www.transparenttextures.com/patterns/notebook.png");
+
+opacity:.18;
+
+pointer-events:none;
+
+}
+
+/* ========================= */
+/* POLAROID */
+/* ========================= */
+
+.polaroid{
+
+background:white;
+
+padding:18px 18px 55px;
+
+width:min(460px,100%);
+
+margin:0 auto;
+
+box-shadow:
+
+0 18px 40px rgba(0,0,0,.16);
+
+border-radius:6px;
+
+position:relative;
+
+transform:rotate(-2deg);
+
+transition:.4s;
+
+}
+
+.polaroid:hover{
+
+transform:rotate(0deg) scale(1.03);
+
+}
+
+.polaroid img{
+
+width:100%;
+
+display:block;
+
+border-radius:4px;
+
+}
+
+/* tape */
+
+.polaroid::before,
+
+.polaroid::after{
+
+content:"";
+
+position:absolute;
+
+width:95px;
+
+height:28px;
+
+background:rgba(255,248,190,.75);
+
+top:-12px;
+
+box-shadow:0 2px 6px rgba(0,0,0,.08);
+
+}
+
+.polaroid::before{
+
+left:28px;
+
+transform:rotate(-8deg);
+
+}
+
+.polaroid::after{
+
+right:28px;
+
+transform:rotate(8deg);
+
+}
+
+/* ========================= */
+/* PHOTO CAPTION */
+/* ========================= */
+
+.photo-caption{
+
+margin-top:40px;
+
+text-align:center;
+
+font-size:24px;
+
+font-family:'Playfair Display',serif;
+
+line-height:1.8;
+
+color:#4b4b4b;
+
+max-width:700px;
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+.photo-caption i{
+
+font-weight:500;
+
+}
+
+/* ========================= */
+/* FADE UP */
+/* ========================= */
+
+.fade-up{
+
+animation:fadeUp 1.2s ease both;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(70px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+/* ========================= */
+/* LETTER PAGE */
+/* ========================= */
+
+.letter-wrapper{
+
+width:100%;
+
+max-width:900px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:40px;
+
+}
+
+.letter-photo{
+
+width:min(420px,100%);
+
+background:white;
+
+padding:16px 16px 50px;
+
+border-radius:6px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+position:relative;
+
+transform:rotate(2deg);
+
+transition:.35s;
+
+}
+
+.letter-photo:hover{
+
+transform:rotate(0deg) scale(1.02);
+
+}
+
+.letter-photo img{
+
+width:100%;
+
+display:block;
+
+border-radius:4px;
+
+}
+
+.letter-photo::before{
+
+content:"📎";
+
+position:absolute;
+
+top:-16px;
+
+left:18px;
+
+font-size:28px;
+
+}
+
+/* ========================= */
+/* LETTER PAPER */
+/* ========================= */
+
+.letter-paper{
+
+background:#fffdf8;
+
+width:100%;
+
+padding:60px;
+
+border-radius:18px;
+
+box-shadow:0 20px 55px rgba(0,0,0,.12);
+
+position:relative;
+
+border:1px solid rgba(0,0,0,.06);
+
+background-image:
+
+linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
+
+background-size:100% 34px;
+
+}
+
+.letter-paper::before{
+
+content:"A Little Birthday Letter";
+
+position:absolute;
+
+top:22px;
+
+right:30px;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#9b9b9b;
+
+}
+
+.letter-paper h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:42px;
+
+margin-bottom:35px;
+
+color:#2f2f2f;
+
+}
+
+.letter-paper p{
+
+font-size:18px;
+
+line-height:2.1;
+
+margin-bottom:22px;
+
+color:#555;
+
+}
+
+.signature{
+
+margin-top:40px;
+
+font-size:20px;
+
+}
+
+.ps{
+
+margin-top:30px;
+
+font-size:16px;
+
+color:#777;
+
+opacity:.9;
+
+}
+/* ========================= */
+/* FINAL PAGE */
+/* ========================= */
+
+.final-page{
+
+max-width:900px;
+
+width:100%;
+
+background:rgba(255,253,248,.96);
+
+padding:70px;
+
+border-radius:28px;
+
+text-align:center;
+
+box-shadow:0 25px 70px rgba(0,0,0,.15);
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* Sparkles */
+
+#sparkles{
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(#ffffff 1px, transparent 1px),
+
+radial-gradient(#ffe8a3 1px, transparent 1px),
+
+radial-gradient(#c7dcff 1px, transparent 1px);
+
+background-size:
+
+120px 120px,
+
+180px 180px,
+
+220px 220px;
+
+opacity:.55;
+
+animation:sparkleMove 16s linear infinite;
+
+}
+
+@keyframes sparkleMove{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Stamp */
+
+.stamp{
+
+display:inline-block;
+
+margin-bottom:40px;
+
+padding:14px 28px;
+
+border:4px solid #7fa8d8;
+
+color:#7fa8d8;
+
+font-weight:700;
+
+font-size:26px;
+
+letter-spacing:3px;
+
+transform:rotate(-8deg) scale(0);
+
+animation:stampDrop .8s ease forwards;
+
+animation-delay:.5s;
+
+}
+
+@keyframes stampDrop{
+
+0%{
+
+transform:translateY(-250px) rotate(-8deg) scale(0);
+
+opacity:0;
+
+}
+
+70%{
+
+transform:translateY(20px) rotate(-8deg) scale(1.08);
+
+}
+
+100%{
+
+transform:translateY(0) rotate(-8deg) scale(1);
+
+opacity:1;
+
+}
+
+}
+
+.happy-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:60px;
+
+margin-bottom:30px;
+
+color:#2f2f2f;
+
+}
+
+.final-message{
+
+font-size:22px;
+
+line-height:2;
+
+max-width:700px;
+
+margin:0 auto 40px;
+
+color:#555;
+
+}
+
+.made-by{
+
+font-size:20px;
+
+margin-bottom:30px;
+
+}
+
+.end-note{
+
+font-size:16px;
+
+font-style:italic;
+
+color:#777;
+
+margin-bottom:40px;
+
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width:768px){
+
+.welcome-card,
+
+.scrapbook-page,
+
+.letter-paper,
+
+.final-page{
+
+padding:35px 25px;
+
+}
+
+.welcome-card h1,
+
+.happy-title{
+
+font-size:40px;
+
+}
+
+.photo-caption{
+
+font-size:20px;
+
+}
+
+.letter-paper h2{
+
+font-size:32px;
+
+}
+
+.letter-paper p,
+
+.final-message{
+
+font-size:17px;
+
+line-height:1.9;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+}
