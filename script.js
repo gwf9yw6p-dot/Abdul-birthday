@@ -1,239 +1,125 @@
-// =======================================
-// SCRAPBOOK BIRTHDAY WEBSITE
-// script.js
-// =======================================
-
-const pages = document.querySelectorAll(".page");
-
 function nextPage(id){
 
-pages.forEach(page=>{
-
+document.querySelectorAll(".page").forEach(page=>{
 page.classList.remove("active");
-
 });
 
 document.getElementById(id).classList.add("active");
 
-window.scrollTo({
+window.scrollTo(0,0);
 
-top:0,
-
-behavior:"smooth"
-
-});
-
+if(id==="finish"){
+startConfetti();
 }
-
-// ===============================
-// Floating Sparkles
-// ===============================
-
-function createSparkle(){
-
-const sparkle=document.createElement("span");
-
-sparkle.className="sparkle";
-
-sparkle.style.left=Math.random()*100+"vw";
-
-sparkle.style.animationDuration=
-
-(6+Math.random()*5)+"s";
-
-sparkle.style.opacity=Math.random();
-
-document.body.appendChild(sparkle);
-
-setTimeout(()=>{
-
-sparkle.remove();
-
-},10000);
-
-}
-
-setInterval(createSparkle,700);
-
-// ===============================
-// Fade-in Observer
-// ===============================
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("fade-up");
-
-}
-
-});
-
-});
-
-document.querySelectorAll(
-
-".polaroid,.letter-paper,.photo-caption"
-
-).forEach(el=>observer.observe(el));
-// ===============================
-// Typewriter Effect
-// ===============================
-
-function typeWriter(){
-
-const paragraphs=document.querySelectorAll(
-
-".letter-paper p"
-
-);
-
-paragraphs.forEach(paragraph=>{
-
-const text=paragraph.innerHTML;
-
-paragraph.innerHTML="";
-
-let index=0;
-
-function write(){
-
-if(index<text.length){
-
-paragraph.innerHTML+=text.charAt(index);
-
-index++;
-
-setTimeout(write,18);
-
-}
-
-}
-
-write();
-
-});
-
-}
-
-// Run only when the letter page opens
-const originalNextPage=nextPage;
-
-nextPage=function(id){
-
-originalNextPage(id);
 
 if(id==="letter"){
-
-setTimeout(typeWriter,500);
+typeLetter();
+}
 
 }
 
-};
+function typeLetter(){
 
-// ===============================
-// Stamp Animation
-// ===============================
+const paragraphs=document.querySelectorAll(".letter-paper p");
 
-const stamp=document.querySelector(".stamp");
+paragraphs.forEach(p=>{
 
-if(stamp){
+if(p.dataset.done)return;
 
-window.addEventListener("load",()=>{
+p.dataset.done="true";
 
-stamp.animate(
+const text=p.innerHTML;
 
-[
+p.innerHTML="";
 
-{
+let i=0;
 
-transform:"translateY(-250px) rotate(-8deg) scale(.2)",
+function type(){
 
-opacity:0
+if(i<text.length){
 
-},
+p.innerHTML+=text.charAt(i);
 
-{
+i++;
 
-transform:"translateY(20px) rotate(-8deg) scale(1.08)",
-
-opacity:1
-
-},
-
-{
-
-transform:"translateY(0) rotate(-8deg) scale(1)"
+setTimeout(type,18);
 
 }
 
-],
-
-{
-
-duration:900,
-
-easing:"ease-out"
-
 }
 
-);
-
-});
-
-}
-// ===============================
-// Button Click Animation
-// ===============================
-
-document.querySelectorAll("button").forEach(button=>{
-
-button.addEventListener("click",()=>{
-
-button.animate(
-
-[
-
-{transform:"scale(1)"},
-
-{transform:"scale(.95)"},
-
-{transform:"scale(1)"}
-
-],
-
-{
-
-duration:180,
-
-easing:"ease-out"
-
-}
-
-);
-
-});
-
-});
-
-// ===============================
-// Read Again Button
-// ===============================
-
-const readAgain=document.querySelector(".final-page button");
-
-if(readAgain){
-
-readAgain.addEventListener("click",()=>{
-
-location.reload();
+type();
 
 });
 
 }
 
-// ===============================
-// END OF FILE
-// ===============================
+function startConfetti(){
+
+const canvas=document.getElementById("confetti");
+
+if(!canvas)return;
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+let confetti=[];
+
+for(let i=0;i<180;i++){
+
+confetti.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height-canvas.height,
+
+r:Math.random()*8+3,
+
+d:Math.random()*180,
+
+speed:Math.random()*3+2,
+
+tilt:Math.random()*10,
+
+color:["#AEEBFF","#D6F5FF","#FFFFFF","#FFE9F6","#FFF8C7"][Math.floor(Math.random()*5)]
+
+});
+
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+confetti.forEach(c=>{
+
+ctx.beginPath();
+
+ctx.fillStyle=c.color;
+
+ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+
+ctx.fill();
+
+c.y+=c.speed;
+
+c.x+=Math.sin(c.d);
+
+if(c.y>canvas.height){
+
+c.y=-10;
+
+}
+
+});
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+}
