@@ -20,37 +20,7 @@ typeLetter();
 
 function typeLetter(){
 
-const paragraphs=document.querySelectorAll(".letter-paper p");
-
-paragraphs.forEach(p=>{
-
-if(p.dataset.done)return;
-
-p.dataset.done="true";
-
-const text=p.innerHTML;
-
-p.innerHTML="";
-
-let i=0;
-
-function type(){
-
-if(i<text.length){
-
-p.innerHTML+=text.charAt(i);
-
-i++;
-
-setTimeout(type,18);
-
-}
-
-}
-
-type();
-
-});
+// Disabled so HTML formatting like <br>, <b> and <i> displays correctly.
 
 }
 
