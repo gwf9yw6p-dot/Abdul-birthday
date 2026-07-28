@@ -1,22 +1,16 @@
-/* ===========================================
+/* =======================================
+   SCRAPBOOK BIRTHDAY WEBSITE
    STYLE.CSS
-   Scrapbook Birthday Website
-=========================================== */
+======================================= */
 
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
 
 html{
-
 scroll-behavior:smooth;
-
 }
 
 body{
@@ -24,18 +18,21 @@ body{
 font-family:'Poppins',sans-serif;
 
 background:
-linear-gradient(rgba(248,244,236,.82),rgba(248,244,236,.82)),
-url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-
-background-size:cover;
+linear-gradient(
+180deg,
+#dff3ff 0%,
+#edf8ff 25%,
+#f8fcff 60%,
+#fffdf8 100%
+);
 
 overflow-x:hidden;
 
-color:#3b3b3b;
-
-position:relative;
+color:#444;
 
 min-height:100vh;
+
+position:relative;
 
 }
 
@@ -48,57 +45,49 @@ min-height:100vh;
 position:fixed;
 
 left:0;
-
 top:0;
 
 width:100%;
-
 height:100%;
 
 pointer-events:none;
 
+z-index:0;
+
 background-image:
 
-radial-gradient(white 1px, transparent 1px),
+radial-gradient(white 1.6px, transparent 1.6px),
 
-radial-gradient(#f6d36f 1px, transparent 1px),
+radial-gradient(#fff8d8 1.3px, transparent 1.3px),
 
-radial-gradient(#dcecff 1px, transparent 1px);
+radial-gradient(#d8efff 1.2px, transparent 1.2px);
 
 background-size:
 
 140px 140px,
 
-220px 220px,
+230px 230px,
 
-170px 170px;
+180px 180px;
 
-opacity:.45;
+animation:starsMove 18s linear infinite;
 
-animation:twinkle 14s linear infinite;
-
-z-index:0;
+opacity:.75;
 
 }
 
-@keyframes twinkle{
+@keyframes starsMove{
 
 0%{
-
 transform:translateY(0);
-
 }
 
 50%{
-
-transform:translateY(-20px);
-
+transform:translateY(-30px);
 }
 
 100%{
-
 transform:translateY(0);
-
 }
 
 }
@@ -121,7 +110,7 @@ position:relative;
 
 z-index:2;
 
-animation:fade .8s ease;
+animation:fadePage .8s ease;
 
 }
 
@@ -131,13 +120,13 @@ display:flex;
 
 }
 
-@keyframes fade{
+@keyframes fadePage{
 
 from{
 
 opacity:0;
 
-transform:translateY(40px);
+transform:translateY(35px);
 
 }
 
@@ -145,33 +134,34 @@ to{
 
 opacity:1;
 
-transform:translateY(0);
+transform:none;
 
 }
 
 }
 
 /* ========================= */
-/* WELCOME */
+/* WELCOME CARD */
 /* ========================= */
 
 .welcome-card{
 
-background:rgba(255,255,255,.78);
+width:100%;
+max-width:700px;
 
-backdrop-filter:blur(12px);
-
-padding:70px;
-
-border-radius:28px;
+padding:70px 50px;
 
 text-align:center;
 
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(14px);
+
+border-radius:30px;
+
 box-shadow:
 
-0 20px 60px rgba(0,0,0,.12);
-
-max-width:720px;
+0 25px 70px rgba(116,160,199,.18);
 
 border:1px solid rgba(255,255,255,.7);
 
@@ -179,9 +169,11 @@ border:1px solid rgba(255,255,255,.7);
 
 .welcome-card h1{
 
-font-size:55px;
-
 font-family:'Playfair Display',serif;
+
+font-size:58px;
+
+color:#385d7a;
 
 margin-bottom:20px;
 
@@ -191,41 +183,45 @@ margin-bottom:20px;
 
 font-size:22px;
 
-margin-bottom:40px;
-
 font-style:italic;
 
-color:#777;
+margin-bottom:45px;
+
+color:#6d7b8c;
 
 }
 
 button{
 
-padding:16px 40px;
+padding:16px 42px;
 
 border:none;
 
 border-radius:999px;
 
-background:#9eb7d8;
+cursor:pointer;
+
+background:#9dc8ea;
 
 color:white;
 
 font-size:17px;
 
-cursor:pointer;
+font-weight:600;
 
 transition:.35s;
 
-box-shadow:0 12px 25px rgba(0,0,0,.15);
+box-shadow:
+
+0 10px 30px rgba(99,156,214,.25);
 
 }
 
 button:hover{
 
-transform:translateY(-5px);
+transform:translateY(-4px);
 
-background:#87a8d4;
+background:#84b8e5;
 
 }
 /* ========================= */
@@ -234,29 +230,25 @@ background:#87a8d4;
 
 .scrapbook-page{
 
+width:100%;
 max-width:900px;
 
-width:100%;
+background:#fffdf8;
 
-background:#fdfaf3;
+padding:60px;
 
-padding:55px;
-
-border-radius:30px;
-
-box-shadow:
-
-0 25px 70px rgba(0,0,0,.12);
+border-radius:28px;
 
 position:relative;
 
-overflow:hidden;
+box-shadow:
+0 25px 70px rgba(120,150,190,.18);
 
-border:2px solid rgba(255,255,255,.7);
+overflow:hidden;
 
 }
 
-/* subtle paper texture */
+/* Paper texture */
 
 .scrapbook-page::before{
 
@@ -268,9 +260,14 @@ inset:0;
 
 background:
 
-url("https://www.transparenttextures.com/patterns/notebook.png");
+linear-gradient(
+transparent 97%,
+rgba(0,0,0,.025) 100%
+);
 
-opacity:.18;
+background-size:100% 34px;
+
+opacity:.45;
 
 pointer-events:none;
 
@@ -282,31 +279,33 @@ pointer-events:none;
 
 .polaroid{
 
+width:min(430px,100%);
+
+margin:auto;
+
 background:white;
 
 padding:18px 18px 55px;
 
-width:min(460px,100%);
-
-margin:0 auto;
-
-box-shadow:
-
-0 18px 40px rgba(0,0,0,.16);
-
-border-radius:6px;
+border-radius:4px;
 
 position:relative;
 
+box-shadow:
+
+0 20px 45px rgba(0,0,0,.18);
+
 transform:rotate(-2deg);
 
-transition:.4s;
+transition:.35s;
 
 }
 
 .polaroid:hover{
 
-transform:rotate(0deg) scale(1.03);
+transform:
+rotate(0deg)
+scale(1.03);
 
 }
 
@@ -320,31 +319,25 @@ border-radius:4px;
 
 }
 
-/* tape */
+/* Masking tape */
 
-.polaroid::before,
-
-.polaroid::after{
+.polaroid::before{
 
 content:"";
 
 position:absolute;
 
-width:95px;
+width:90px;
 
 height:28px;
 
-background:rgba(255,248,190,.75);
+background:
+
+rgba(255,244,180,.72);
+
+left:32px;
 
 top:-12px;
-
-box-shadow:0 2px 6px rgba(0,0,0,.08);
-
-}
-
-.polaroid::before{
-
-left:28px;
 
 transform:rotate(-8deg);
 
@@ -352,41 +345,51 @@ transform:rotate(-8deg);
 
 .polaroid::after{
 
-right:28px;
+content:"";
+
+position:absolute;
+
+width:90px;
+
+height:28px;
+
+background:
+
+rgba(255,244,180,.72);
+
+right:32px;
+
+top:-12px;
 
 transform:rotate(8deg);
 
 }
 
 /* ========================= */
-/* PHOTO CAPTION */
+/* PHOTO QUOTE */
 /* ========================= */
 
 .photo-caption{
 
-margin-top:40px;
+margin-top:42px;
 
-text-align:center;
+font-family:
 
-font-size:24px;
+'Playfair Display',serif;
 
-font-family:'Playfair Display',serif;
+font-size:27px;
 
 line-height:1.8;
 
-color:#4b4b4b;
+text-align:center;
 
-max-width:700px;
+color:#566779;
+
+max-width:680px;
 
 margin-left:auto;
 
 margin-right:auto;
-
-}
-
-.photo-caption i{
-
-font-weight:500;
 
 }
 
@@ -396,7 +399,7 @@ font-weight:500;
 
 .fade-up{
 
-animation:fadeUp 1.2s ease both;
+animation:fadeUp 1s ease both;
 
 }
 
@@ -406,7 +409,8 @@ from{
 
 opacity:0;
 
-transform:translateY(70px);
+transform:
+translateY(60px);
 
 }
 
@@ -414,19 +418,18 @@ to{
 
 opacity:1;
 
-transform:translateY(0);
+transform:none;
 
 }
 
 }
 /* ========================= */
-/* LETTER PAGE */
+/* LETTER SECTION */
 /* ========================= */
 
 .letter-wrapper{
 
 width:100%;
-
 max-width:900px;
 
 display:flex;
@@ -435,21 +438,24 @@ flex-direction:column;
 
 align-items:center;
 
-gap:40px;
+gap:45px;
 
 }
 
+/* Top Photo */
+
 .letter-photo{
 
-width:min(420px,100%);
+width:min(430px,100%);
 
 background:white;
 
-padding:16px 16px 50px;
+padding:18px 18px 55px;
 
-border-radius:6px;
+border-radius:5px;
 
-box-shadow:0 20px 45px rgba(0,0,0,.15);
+box-shadow:
+0 20px 50px rgba(0,0,0,.18);
 
 position:relative;
 
@@ -461,7 +467,9 @@ transition:.35s;
 
 .letter-photo:hover{
 
-transform:rotate(0deg) scale(1.02);
+transform:
+rotate(0deg)
+scale(1.02);
 
 }
 
@@ -475,17 +483,45 @@ border-radius:4px;
 
 }
 
+/* Tape */
+
 .letter-photo::before{
 
-content:"📎";
+content:"";
 
 position:absolute;
 
-top:-16px;
+width:90px;
 
-left:18px;
+height:28px;
 
-font-size:28px;
+background:rgba(255,244,180,.72);
+
+left:35px;
+
+top:-12px;
+
+transform:rotate(-7deg);
+
+}
+
+.letter-photo::after{
+
+content:"";
+
+position:absolute;
+
+width:90px;
+
+height:28px;
+
+background:rgba(255,244,180,.72);
+
+right:35px;
+
+top:-12px;
+
+transform:rotate(7deg);
 
 }
 
@@ -495,45 +531,48 @@ font-size:28px;
 
 .letter-paper{
 
-background:#fffdf8;
-
 width:100%;
 
-padding:60px;
+background:#fffefb;
 
-border-radius:18px;
+padding:65px;
 
-box-shadow:0 20px 55px rgba(0,0,0,.12);
+border-radius:22px;
 
 position:relative;
 
-border:1px solid rgba(0,0,0,.06);
+box-shadow:
+0 25px 70px rgba(0,0,0,.12);
 
-background-image:
+border:1px solid rgba(225,225,225,.8);
 
-linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
-
-background-size:100% 34px;
+overflow:hidden;
 
 }
 
+/* Paper lines */
+
 .letter-paper::before{
 
-content:"A Little Birthday Letter";
+content:"";
 
 position:absolute;
 
-top:22px;
+inset:0;
 
-right:30px;
+background:
 
-font-size:12px;
+repeating-linear-gradient(
 
-letter-spacing:2px;
+transparent,
 
-text-transform:uppercase;
+transparent 34px,
 
-color:#9b9b9b;
+rgba(0,0,0,.025) 35px
+
+);
+
+pointer-events:none;
 
 }
 
@@ -541,11 +580,13 @@ color:#9b9b9b;
 
 font-family:'Playfair Display',serif;
 
-font-size:42px;
+font-size:44px;
+
+color:#486581;
 
 margin-bottom:35px;
 
-color:#2f2f2f;
+text-align:center;
 
 }
 
@@ -553,31 +594,41 @@ color:#2f2f2f;
 
 font-size:18px;
 
-line-height:2.1;
-
-margin-bottom:22px;
+line-height:2;
 
 color:#555;
+
+margin-bottom:24px;
+
+position:relative;
+
+z-index:2;
 
 }
 
 .signature{
 
-margin-top:40px;
+margin-top:35px;
 
 font-size:20px;
+
+text-align:right;
+
+font-family:'Playfair Display',serif;
 
 }
 
 .ps{
 
-margin-top:30px;
+margin-top:40px;
+
+text-align:center;
+
+font-style:italic;
+
+color:#7b8794;
 
 font-size:16px;
-
-color:#777;
-
-opacity:.9;
 
 }
 /* ========================= */
@@ -586,23 +637,26 @@ opacity:.9;
 
 .final-page{
 
+width:100%;
 max-width:900px;
 
-width:100%;
+padding:70px 50px;
 
-background:rgba(255,253,248,.96);
+background:rgba(255,255,255,.82);
 
-padding:70px;
+backdrop-filter:blur(12px);
 
-border-radius:28px;
+border-radius:30px;
 
 text-align:center;
-
-box-shadow:0 25px 70px rgba(0,0,0,.15);
 
 position:relative;
 
 overflow:hidden;
+
+box-shadow:
+
+0 25px 70px rgba(120,160,200,.18);
 
 }
 
@@ -616,45 +670,56 @@ inset:0;
 
 pointer-events:none;
 
-background-image:
-
-radial-gradient(#ffffff 1px, transparent 1px),
-
-radial-gradient(#ffe8a3 1px, transparent 1px),
-
-radial-gradient(#c7dcff 1px, transparent 1px);
-
-background-size:
-
-120px 120px,
-
-180px 180px,
-
-220px 220px;
-
-opacity:.55;
-
-animation:sparkleMove 16s linear infinite;
+overflow:hidden;
 
 }
 
-@keyframes sparkleMove{
+#sparkles::before,
+#sparkles::after{
+
+content:"✨ ✦ ✧ ✨ ✦ ✧ ✨";
+
+position:absolute;
+
+font-size:28px;
+
+opacity:.35;
+
+animation:sparkles 14s linear infinite;
+
+white-space:nowrap;
+
+}
+
+#sparkles::before{
+
+top:20%;
+
+left:-20%;
+
+}
+
+#sparkles::after{
+
+bottom:15%;
+
+right:-20%;
+
+animation-delay:7s;
+
+}
+
+@keyframes sparkles{
 
 0%{
 
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-25px);
+transform:translateX(0);
 
 }
 
 100%{
 
-transform:translateY(0);
+transform:translateX(160%);
 
 }
 
@@ -666,49 +731,47 @@ transform:translateY(0);
 
 display:inline-block;
 
-margin-bottom:40px;
+padding:16px 34px;
 
-padding:14px 28px;
+border:4px solid #86aed5;
 
-border:4px solid #7fa8d8;
-
-color:#7fa8d8;
+color:#86aed5;
 
 font-weight:700;
 
-font-size:26px;
+font-size:24px;
 
 letter-spacing:3px;
 
-transform:rotate(-8deg) scale(0);
+margin-bottom:40px;
 
-animation:stampDrop .8s ease forwards;
+transform:rotate(-8deg);
 
-animation-delay:.5s;
+animation:stampPop .8s ease;
 
 }
 
-@keyframes stampDrop{
+@keyframes stampPop{
 
 0%{
 
-transform:translateY(-250px) rotate(-8deg) scale(0);
-
 opacity:0;
+
+transform:scale(2.5) rotate(-15deg);
 
 }
 
 70%{
 
-transform:translateY(20px) rotate(-8deg) scale(1.08);
+transform:scale(.9) rotate(-8deg);
 
 }
 
 100%{
 
-transform:translateY(0) rotate(-8deg) scale(1);
-
 opacity:1;
+
+transform:scale(1) rotate(-8deg);
 
 }
 
@@ -718,60 +781,75 @@ opacity:1;
 
 font-family:'Playfair Display',serif;
 
-font-size:60px;
+font-size:58px;
 
-margin-bottom:30px;
+color:#4a6882;
 
-color:#2f2f2f;
+margin-bottom:25px;
 
 }
 
 .final-message{
 
-font-size:22px;
+font-size:21px;
 
 line-height:2;
 
-max-width:700px;
+max-width:650px;
 
-margin:0 auto 40px;
+margin:0 auto 35px;
 
-color:#555;
+color:#5b6775;
 
 }
 
 .made-by{
 
-font-size:20px;
+font-family:'Playfair Display',serif;
 
-margin-bottom:30px;
+font-size:22px;
+
+margin-bottom:20px;
 
 }
 
 .end-note{
 
-font-size:16px;
-
 font-style:italic;
 
-color:#777;
+color:#7b8794;
 
 margin-bottom:40px;
 
 }
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+/* Confetti */
 
-@media (max-width:768px){
+#confetti{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+z-index:999;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
 
 .welcome-card,
-
 .scrapbook-page,
-
 .letter-paper,
-
 .final-page{
 
 padding:35px 25px;
@@ -779,16 +857,15 @@ padding:35px 25px;
 }
 
 .welcome-card h1,
-
 .happy-title{
 
-font-size:40px;
+font-size:38px;
 
 }
 
 .photo-caption{
 
-font-size:20px;
+font-size:21px;
 
 }
 
@@ -799,7 +876,6 @@ font-size:32px;
 }
 
 .letter-paper p,
-
 .final-message{
 
 font-size:17px;
